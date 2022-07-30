@@ -14,6 +14,8 @@ namespace HashTables
                 Console.WriteLine("\n0. Exit");
                 Console.WriteLine("1.Find frequency of words in a sentence");
                 Console.WriteLine("Q2. Find Frequency of Words in a Large Paragraph Phrase");
+                Console.WriteLine("Q3. Remove Avoidable Word From Phrase");
+
 
                 Console.Write("\nEnter Question Number You Want to Execute : ");
                 int Choice = Convert.ToInt32(Console.ReadLine()); // Taking Input From User
@@ -151,6 +153,37 @@ namespace HashTables
                             Console.WriteLine(storeCountList2[i]);
                         }
                         Console.WriteLine("##################################################################");
+                        break;
+
+                    case 3:
+                        //Remove String stores our phrase
+                        string removeString = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+
+                        //Remove StringArray will contain each word s
+                        string[] removeStringArray = removeString.Split(' ');
+
+                        //Creating object and passing removeStringArray's size to it
+                        MyMapNode<int, string> hash3 = new MyMapNode<int, string>(removeStringArray.Length);
+                        Console.WriteLine("Given phrase is :- \n");
+
+                        //Adding each word to the hash table and printing it
+                        for (int i = 0; i < removeStringArray.Length; i++)
+                        {
+                            hash3.Add(i, removeStringArray[i]);
+                            Console.Write(hash3.Get(i) +" ");
+                        }
+
+                        //key for word avoidable
+                        hash3.Remove(17);
+
+                        Console.WriteLine("\n\nAfter Removing Word \"Avoidable\" from Phrase, the phrase is :-");
+
+                        //Printing all words in the hash table after we removed the word avoidable
+                        for (int i = 0; i < removeStringArray.Length; i++)
+                        {
+                            Console.Write(hash3.Get(i) +" ");
+                        }
+                        Console.WriteLine("\n#################################################");
                         break;
 
                     default:
